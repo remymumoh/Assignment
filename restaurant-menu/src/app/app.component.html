@@ -1,0 +1,77 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:left">
+    <title>{{title}}</title>
+
+</div>
+<div class="content"><span>restaurant-menu app is running!</span> </div>
+<div class="container">
+  <div class="text-left mt-5">
+    <div class="row">
+      <div class="col-md-4">
+
+
+
+        <ul class="list-group">
+
+          <!-- Parent Item -->
+          <li class="list-group-item" *ngFor="let item of data.ParentChildchecklist">
+
+            <!-- Parent Checkbox -->
+            <span (click)="expandCollapse(item)">
+            <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name"
+                   (click)="expandCollapse(item)" />
+            {{item.name}}
+            </span>
+            <!-- Parent Arrow -->
+            <span (click)="expandCollapse(item)">
+              <i class="fas fa-angle-up" *ngIf="item.isClosed;else isCollapsed"></i>
+              <ng-template #isCollapsed>
+                <i class="fas fa-angle-down"></i>
+              </ng-template>
+            </span>
+            <div class="child-list" [hidden]="item.isClosed">
+
+              <ul class="list-group level-two">
+                <!-- Child Item -->
+                <li class="list-group-item level-two" *ngFor="let itemChild of
+                item.choices">
+                  <!-- Child Checkbox -->
+                  <input type="checkbox" [(ngModel)]="itemChild.isSelected" name="list_name_child"
+                    value="{{itemChild.id}}" (ngModelChange)="childCheck(item,item.choices)" />
+                  {{itemChild.name}}
+                </li>
+
+              </ul>
+              <ul class="list-group level-two">
+                <b>You might also want </b>
+                <!-- Child Item -->
+                <li class="list-group-item level-two" *ngFor="let itemChild of
+                item.related">
+
+                  <!-- Child Checkbox -->
+                  <input type="checkbox" [(ngModel)]="itemChild.isSelected" name="list_name_child"
+                         value="{{itemChild.id}}" (ngModelChange)="childCheck(item,item.related)" />
+                  {{itemChild.name}}
+                </li>
+              </ul>
+
+              <ul class="list-group level-three">
+                <!-- Child Item -->
+                <li class="list-group-item level-two" *ngFor="let itemChild of
+                item.related.name">
+                  <!-- Child Checkbox -->
+                  <input type="checkbox" [(ngModel)]="itemChild.isSelected" name="list_name_child"
+                         value="{{itemChild.id}}" (ngModelChange)="childCheck(item,item.related.name)" />
+                  {{itemChild.related.name}}
+                </li>
+
+              </ul>
+
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
