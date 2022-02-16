@@ -24,12 +24,6 @@
               {{item.name}}
             </span>
             <!-- Parent Arrow -->
-            <span (click)="expandCollapseAll(item)">
-              <i class="fas fa-angle-up" *ngIf="item.isClosed;else isCollapsed"></i>
-              <ng-template #isCollapsed>
-                <i class="fas fa-angle-down"></i>
-              </ng-template>
-            </span>
             <div class="child-list" [hidden]="!item.isClosed">
 
               <ul class="list-group level-two">
