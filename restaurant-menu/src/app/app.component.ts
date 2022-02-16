@@ -103,6 +103,7 @@ export class AppComponent {
   // Expand/Collapse event on each parent
   expandCollapse(obj) {
     obj.isClosed = !obj.isClosed;
+
   }
 
   // Master expand/ collapse event
@@ -113,6 +114,7 @@ export class AppComponent {
     }
     obj.isAllCollapsed = !obj.isAllCollapsed;
   }
+
 
   // Just to show updated JSON object on view
   stringify(obj) {
